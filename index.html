@@ -195,19 +195,19 @@
 " onclick="closeGuestList()"></div>
 
 <script>
-  async function fetchGuestList() {
+  async function fetchGuestList(partyName) {
       try {
           const response = await fetch('https://script.google.com/macros/s/AKfycbyeYX2My_hPEzVcNvYLU6Fw3c12exe--TuWOCxjf-ln9pOK-XcP8GYgURy8eMUzcD2D/exec');
           const data = await response.json();
           let guestListHTML = "<ul style='list-style: none; padding: 0;'>";
 
           for (let i = 1; i < data.length; i++) {
-              let guest = data[i][0];
-              let party = data[i][2];
-              let showName = data[i][3] === "Yes";
+              let guest = data[i][0];  // Column A (Name)
+              let party = data[i][2];  // Column C (Party Selection)
 
-              if (showName) {
-                  guestListHTML += `<li style="padding: 8px; font-size: 1.2em;">${guest} - <span style="color: #FFD700;">${party}</span></li>`;
+              // Only show guests for the selected party
+              if (party.includes(partyName)) {
+                  guestListHTML += `<li style="padding: 8px; font-size: 1.2em;">${guest}</li>`;
               }
           }
 
@@ -219,10 +219,10 @@
       }
   }
 
-  function openGuestList() {
+  function openGuestList(partyName) {
       document.getElementById("guest-list-modal").style.display = "block";
       document.getElementById("overlay").style.display = "block";
-      fetchGuestList();
+      fetchGuestList(partyName); // Fetch only the guests for the clicked party
   }
 
   function closeGuestList() {
