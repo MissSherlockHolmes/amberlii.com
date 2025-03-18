@@ -5,11 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amberleigh's Birthday Parties</title>
     <style>
-        /* Villainous Dark Theme */
+                @import url('https://fonts.googleapis.com/css2?family=Courgette&family=Cardo:wght@400;700&display=swap');
+
+        /* Elegant High-End Theme */
         body {
             background-color: #080706;
-            color: #dedebd; /* Light text */
-            font-family: 'Arial', sans-serif;
+            color: #dedebd;
+            font-family: 'Cardo', serif; /* High-end body font */
             text-align: center;
             margin: 0;
             padding: 0;
@@ -26,74 +28,83 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            border-bottom: 3px solid #ffd138; /* Gold */
+            border-bottom: 3px solid #ffd138;
         }
 
         .header h1 {
-            font-size: 2.8em;
-            font-weight: bold;
-            color: #89fffa; 
-            text-shadow: 3px 3px 8px rgba(187, 255, 255, 0.8); /* Cyan glow */
-            -webkit-text-stroke: 2px white; /* White outline */
+            font-size: 3.5em;
+            font-weight: 700;
+            font-family: 'Courgette', cursive; /* Elegant script-style font */
+            color: #BBFFFF;
+            text-shadow: -2px -2px 0 white,  
+                         2px -2px 0 white,  
+                        -2px  2px 0 white,  
+                         2px  2px 0 white,  
+                         3px 3px 8px rgba(187, 255, 255, 0.8);
         }
-
-
 
         /* Party Boxes */
         .party-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            padding: 20px;
+            padding: 40px;
         }
 
         .party-box {
-            background-color: #3a4742; /* Deep Forest */
-            border: 3px solid #487b89; /* Mysterious Blue */
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px;
-            width: 260px;
+            background-color: #3a4742;
+            border: 3px solid #487b89;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px;
+            width: 280px;
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
         .party-box:hover {
             transform: scale(1.05);
-            box-shadow: 0px 0px 15px rgba(95, 172, 184, 0.8);
-            background-color: #1c1e19; /* Coco’s Black */
+            box-shadow: 0px 0px 20px rgba(95, 172, 184, 0.8);
+            background-color: #1c1e19;
         }
 
         .party-box h2 {
-            font-size: 1.6em;
-            margin-bottom: 10px;
-            color: #ffd138; /* Gold */
+            font-size: 1.8em;
+            font-weight: 600;
+            font-family: 'Courgette', cursive; /* Matches header for consistency */
+            margin-bottom: 15px;
+            color: #ffd138;
         }
 
         .party-box p {
-            font-size: 1em;
-            color: #5facb8; /* Finnish Fiord */
+            font-size: 1.1em;
+            font-family: 'Cardo', serif; /* Classic high-end serif */
+            color: #5facb8;
         }
 
         .party-box a {
             text-decoration: none;
-            display: block;
-            background-color: #ffd138; /* Gold */
+            display: inline-block;
+            background-color: #ffd138;
             color: black;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 6px;
-            font-weight: bold;
+            padding: 12px 18px;
+            margin-top: 15px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            font-family: 'Courgette', cursive;
+            transition: all 0.3s ease;
         }
 
         .party-box a:hover {
-            background-color: #9ca67a; /* Forester */
+            background-color: #9ca67a;
             color: black;
-        } 
+        }
+
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Amberleigh's Birthday Celebration</h1>
+        <h1>Amberleigh's 40th Epic Birthday Celebration</h1>
     </div>
 
     <div class="party-container">
