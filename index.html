@@ -210,7 +210,7 @@
     text-align: center;
 ">
     <h2 style="color: #b9fa85;">Guest List</h2>
-    <div id="guest-list-content"></div>
+    <div id="guest-list-content">Fetching guest list...</div>
     <button onclick="closeGuestList()" style="
         background-color: #b9fa85;
         color: black;
@@ -236,7 +236,7 @@
 " onclick="closeGuestList()"></div>
 
 <script>
-     async function fetchGuestList(partyName) {
+        async function fetchGuestList(partyName) {
         try {
             const response = await fetch('https://script.google.com/macros/s/AKfycbyeYX2My_hPEzVcNvYLU6Fw3c12exe--TuWOCxjf-ln9pOK-XcP8GYgURy8eMUzcD2D/exec');
             const data = await response.json();
@@ -260,24 +260,23 @@
         }
         return Promise.resolve();  // Return a resolved promise once the data is loaded
     }
-
-
-     function openGuestList(partyName) {
-        // First hide the modal, so it won't show until the data is ready
-        document.getElementById("guest-list-modal").style.display = "none";
     
-        // Then fetch the guest list
+    function openGuestList(partyName) {
+        // Display the modal with the "Fetching guest list..." message first
+        document.getElementById("guest-list-modal").style.display = "block";
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("guest-list-content").innerHTML = "Fetching guest list..."; // Show loading message
+    
+        // Fetch the guest list and update the modal once the data is ready
         fetchGuestList(partyName).then(() => {
-            // Now that the data is ready, display the modal
-            document.getElementById("guest-list-modal").style.display = "block";
-            document.getElementById("overlay").style.display = "block";
+            // Data is fetched, the content is updated, and modal is now fully populated
         });
     }
-
-  function closeGuestList() {
-      document.getElementById("guest-list-modal").style.display = "none";
-      document.getElementById("overlay").style.display = "none";
-  }
+    
+    function closeGuestList() {
+        document.getElementById("guest-list-modal").style.display = "none";
+        document.getElementById("overlay").style.display = "none";
+    }
 </script>
 
 </body>
