@@ -100,8 +100,6 @@
             background-color: #9ca67a;
             color: black;
         }
-
-
     </style>
 </head>
 <body>
@@ -109,7 +107,7 @@
         <h1>Amberleigh's 40th Epic Birthday Celebration</h1>
     </div>
 
-       <div class="party-container">
+    <div class="party-container">
         <!-- Party 1: Tbilisi -->
         <div class="party-box">
             <h2>Tbilisi</h2>
@@ -117,7 +115,7 @@
             <p>📍 Location: <a href="https://www.tbilisi.ee" target="_blank">Tbilisi, Tallinn</a></p>
             <p>🍽️ Middle Eastern Dinner</p>
             <a href="YOUR_RSVP_LINK_HERE" target="_blank">RSVP</a>
-            <a href="YOUR_GUEST_LIST_LINK_HERE" target="_blank" style="margin-top: 10px; display: block;">View Guest List</a>
+            <a href="#guest-list" style="margin-top: 10px; display: block;">View Guest List</a>
         </div>
 
         <!-- Party 2: Farm -->
@@ -127,7 +125,7 @@
             <p>📍 Location: <a href="https://restaurant.farm" target="_blank">Farm, Tallinn</a></p>
             <p>🍽️ Elegant Dinner + Bar Hopping</p>
             <a href="YOUR_RSVP_LINK_HERE" target="_blank">RSVP</a>
-            <a href="YOUR_GUEST_LIST_LINK_HERE" target="_blank" style="margin-top: 10px; display: block;">View Guest List</a>
+            <a href="#guest-list" style="margin-top: 10px; display: block;">View Guest List</a>
         </div>
 
         <!-- Party 3: Olde Hansa -->
@@ -137,7 +135,7 @@
             <p>📍 Location: <a href="https://www.oldehansa.ee" target="_blank">Olde Hansa, Tallinn</a></p>
             <p>🍽️ Medieval Feast</p>
             <a href="YOUR_RSVP_LINK_HERE" target="_blank">RSVP</a>
-            <a href="YOUR_GUEST_LIST_LINK_HERE" target="_blank" style="margin-top: 10px; display: block;">View Guest List</a>
+            <a href="#guest-list" style="margin-top: 10px; display: block;">View Guest List</a>
         </div>
 
         <!-- Party 4: Dominic -->
@@ -147,8 +145,47 @@
             <p>📍 Location: <a href="https://www.restoran.ee" target="_blank">Restoran Dominic, Tallinn</a></p>
             <p>🍽️ Fine Dining Experience</p>
             <a href="YOUR_RSVP_LINK_HERE" target="_blank">RSVP</a>
-            <a href="YOUR_GUEST_LIST_LINK_HERE" target="_blank" style="margin-top: 10px; display: block;">View Guest List</a>
+            <a href="#guest-list" style="margin-top: 10px; display: block;">View Guest List</a>
         </div>
     </div>
+
+    <!-- Guest List Section -->
+    <h2 style="font-family: 'Cinzel Decorative', serif; color: #ffd138;">Guest List</h2>
+    <div id="guest-list" style="
+        font-family: 'Cardo', serif;
+        color: #dedebd;
+        padding: 15px;
+        border: 2px solid #487b89;
+        border-radius: 10px;
+        background-color: #3a4742;
+        max-width: 600px;
+        margin: auto;
+    "></div>
+
+    <script>
+      async function fetchGuestList() {
+          try {
+              const response = await fetch('https://script.google.com/macros/s/AKfycbyeYX2My_hPEzVcNvYLU6Fw3c12exe--TuWOCxjf-ln9pOK-XcP8GYgURy8eMUzcD2D/exec');
+              const data = await response.json();
+              let guestListHTML = "<ul style='list-style: none; padding: 0;'>";
+
+              for (let i = 1; i < data.length; i++) {
+                  let guest = data[i][0];
+                  let party = data[i][2];
+                  let showName = data[i][3] === "Yes";
+
+                  if (showName) {
+                      guestListHTML += `<li style="padding: 8px; font-size: 1.2em;">${guest} - <span style="color: #FFD700;">${party}</span></li>`;
+                  }
+              }
+
+              guestListHTML += "</ul>";
+              document.getElementById("guest-list").innerHTML = guestListHTML;
+          } catch (error) {
+              console.error("Error fetching guest list:", error);
+          }
+      }
+      fetchGuestList();
+    </script>
 </body>
 </html>
