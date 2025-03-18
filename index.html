@@ -108,9 +108,31 @@
             text-align: center;
         }
 
+        /* Style for all buttons to ensure uniformity */
+        button {
+            background-color: #b9fa85;
+            color: black;
+            font-weight: bold;
+            padding: 12px 18px; /* Ensure the same padding for all buttons */
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 1em;
+            font-family: 'Cinzel Decorative', serif;
+            transition: all 0.3s ease;
+            width: 100%; /* Ensure the button fills the width of its container */
+        }
+        
+        /* Hover effect for buttons */
+        button:hover {
+            background-color: #9ca67a;
+            color: black;
+        }
         
     </style>
 </head>
+    
 <body>
     <div class="header">
         <h1>Amberleigh's 40th Epic Birthday Celebration</h1>
@@ -140,8 +162,7 @@
             </div>
             <p>🍽️ Elegant Dinner + Bar Hopping</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScNkTrMDV7Q8weqCIUpT2PEkgPYhF5CIVU99TTxfws03kAPEg/viewform?usp=sharing" target="_blank">RSVP</a>
-            <button onclick="openGuestList('Farm')" style="     background-color: #b9fa85;     color: black;     font-weight: bold;     padding: 10px;     border: none;     border-radius: 5px;     margin-top: 15px;     cursor: pointer; ">View Guest List</button>
-        </div>
+            <button class="view-guest-list" onclick="openGuestList('Farm')">View Guest List</button>        </div>
 
         <!-- Party 3: Olde Hansa -->
         <div class="party-box">
@@ -153,8 +174,7 @@
             </div>
             <p>🍽️ Medieval Feast</p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScNkTrMDV7Q8weqCIUpT2PEkgPYhF5CIVU99TTxfws03kAPEg/viewform?usp=sharing" target="_blank">RSVP</a>
-            <button onclick="openGuestList('Olde Hansa')" style="     background-color: #b9fa85;     color: black;     font-weight: bold;     padding: 10px;     border: none;     border-radius: 5px;     margin-top: 15px;     cursor: pointer; ">View Guest List</button>
-        </div>
+            <button class="view-guest-list" onclick="openGuestList('Olde Hansa')">View Guest List</button>        </div>
 
         <!-- Party 4: Dominic -->
         <div class="party-box">
@@ -166,7 +186,7 @@
             </div>
             <p>🍽️ Fine Dining </p>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScNkTrMDV7Q8weqCIUpT2PEkgPYhF5CIVU99TTxfws03kAPEg/viewform?usp=sharing" target="_blank">RSVP</a>
-            <button onclick="openGuestList('Dominic')" style="     background-color: #b9fa85;     color: black;     font-weight: bold;     padding: 10px;     border: none;     border-radius: 5px;     margin-top: 15px;     cursor: pointer; ">View Guest List</button>
+            <button class="view-guest-list" onclick="openGuestList('Dominic')">View Guest List</button>        
         </div>
     </div>
  
