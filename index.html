@@ -148,44 +148,7 @@
             <button onclick="openGuestList('Dominic')" style="     background-color: #ffd138;     color: black;     font-weight: bold;     padding: 10px;     border: none;     border-radius: 5px;     margin-top: 15px;     cursor: pointer; ">View Guest List</button>
         </div>
     </div>
-
-    <script>
-  async function fetchGuestList(partyName) {
-      try {
-          const response = await fetch('https://script.google.com/macros/s/AKfycbyeYX2My_hPEzVcNvYLU6Fw3c12exe--TuWOCxjf-ln9pOK-XcP8GYgURy8eMUzcD2D/exec');
-          const data = await response.json();
-          let guestListHTML = "<ul style='list-style: none; padding: 0;'>";
-
-          for (let i = 1; i < data.length; i++) {
-              let guest = data[i][0];  // Column A (Name)
-              let party = data[i][2];  // Column C (Party Selection)
-              let showName = data[i][3] === "Yes"; // Column D (Public Guest List)
-
-              if (showName && party.includes(partyName)) {
-                  guestListHTML += `<li style="padding: 8px; font-size: 1.2em;">${guest}</li>`;
-              }
-          }
-
-          guestListHTML += "</ul>";
-          document.getElementById("guest-list-content").innerHTML = guestListHTML;
-      } catch (error) {
-          console.error("Error fetching guest list:", error);
-          document.getElementById("guest-list-content").innerHTML = "<p style='color: red;'>Failed to load guest list.</p>";
-      }
-  }
-
-  function openGuestList(partyName) {
-      document.getElementById("guest-list-modal").style.display = "block";
-      document.getElementById("overlay").style.display = "block";
-      fetchGuestList(partyName); // Call fetch with specific party
-  }
-
-  function closeGuestList() {
-      document.getElementById("guest-list-modal").style.display = "none";
-      document.getElementById("overlay").style.display = "none";
-  }
-</script>
-    
+ 
     <!-- Guest List Pop-Up Modal -->
 <div id="guest-list-modal" style="
     display: none;
