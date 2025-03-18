@@ -216,35 +216,43 @@
 " onclick="closeGuestList()"></div>
 
 <script>
-  async function fetchGuestList(partyName) {
-      try {
-          const response = await fetch('https://script.google.com/macros/s/AKfycbyeYX2My_hPEzVcNvYLU6Fw3c12exe--TuWOCxjf-ln9pOK-XcP8GYgURy8eMUzcD2D/exec');
-          const data = await response.json();
-          let guestListHTML = "<ul style='list-style: none; padding: 0;'>";
+     async function fetchGuestList(partyName) {
+        try {
+            const response = await fetch('https://script.google.com/macros/s/AKfycbyeYX2My_hPEzVcNvYLU6Fw3c12exe--TuWOCxjf-ln9pOK-XcP8GYgURy8eMUzcD2D/exec');
+            const data = await response.json();
+            let guestListHTML = "<ul style='list-style: none; padding: 0;'>";
+    
+            for (let i = 1; i < data.length; i++) {
+                let guest = data[i][1];  // Column B (Name)
+                let party = data[i][2];  // Column C (Party Selection)
+    
+                // Only show guests for the selected party
+                if (party && party.toLowerCase().includes(partyName.toLowerCase())) {
+                    guestListHTML += `<li style="padding: 8px; font-size: 1.2em;">${guest}</li>`;
+                }
+            }
+    
+            guestListHTML += "</ul>";
+            document.getElementById("guest-list-content").innerHTML = guestListHTML;
+        } catch (error) {
+            console.error("Error fetching guest list:", error);
+            document.getElementById("guest-list-content").innerHTML = "<p style='color: red;'>Failed to load guest list.</p>";
+        }
+        return Promise.resolve();  // Return a resolved promise once the data is loaded
+    }
 
-          for (let i = 1; i < data.length; i++) {
-              let guest = data[i][1];  // Column B (Name)
-              let party = data[i][2];  // Column C (Party Selection)
 
-              // Only show guests for the selected party
-              if (party && party.toLowerCase().includes(partyName.toLowerCase())) {
-                  guestListHTML += `<li style="padding: 8px; font-size: 1.2em;">${guest}</li>`;
-              }
-          }
-
-          guestListHTML += "</ul>";
-          document.getElementById("guest-list-content").innerHTML = guestListHTML;
-      } catch (error) {
-          console.error("Error fetching guest list:", error);
-          document.getElementById("guest-list-content").innerHTML = "<p style='color: red;'>Failed to load guest list.</p>";
-      }
-  }
-
-  function openGuestList(partyName) {
-      document.getElementById("guest-list-modal").style.display = "block";
-      document.getElementById("overlay").style.display = "block";
-      fetchGuestList(partyName); // Fetch only the guests for the clicked party
-  }
+     function openGuestList(partyName) {
+        // First hide the modal, so it won't show until the data is ready
+        document.getElementById("guest-list-modal").style.display = "none";
+    
+        // Then fetch the guest list
+        fetchGuestList(partyName).then(() => {
+            // Now that the data is ready, display the modal
+            document.getElementById("guest-list-modal").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        });
+    }
 
   function closeGuestList() {
       document.getElementById("guest-list-modal").style.display = "none";
