@@ -100,6 +100,14 @@
             background-color: #9ca67a;
             color: black;
         }
+
+        .party-box .location {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
         
     </style>
 </head>
@@ -113,9 +121,12 @@
         <div class="party-box">
             <h2>Tbilisi</h2>
             <p>📅 Date: Friday, March 28, 7:00 PM</p>
-            <p>📍 Location: <a href="https://www.tbilisi.ee" target="_blank">Tbilisi</a></p>
+            <div class="location">
+                <p>📍 Location:</p>
+                <a href="https://www.tbilisi.ee" target="_blank">Tbilisi</a>
+            </div>
             <p>🍽️ Georgian Dinner</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScNkTrMDV7Q8weqCIUpT2PEkgPYhF5CIVU99TTxfws03kAPEg/viewform?usp=sharing" target="_blank" class="location">RSVP</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScNkTrMDV7Q8weqCIUpT2PEkgPYhF5CIVU99TTxfws03kAPEg/viewform?usp=sharing" target="_blank">RSVP</a>
             <button onclick="openGuestList('Tbilisi')" style="     background-color: #b9fa85;     color: black;     font-weight: bold;     padding: 10px;     border: none;     border-radius: 5px;     margin-top: 15px;     cursor: pointer; ">View Guest List</button>
         </div>
 
@@ -123,9 +134,12 @@
         <div class="party-box">
             <h2>Farm</h2>
             <p>📅 Date: Saturday, March 29, 7:00 PM</p>
-            <p>📍 Location: <a href="https://restaurant.farm" target="_blank">Farm</a></p>
+            <div class="location">
+                <p>📍 Location:</p>
+                <a href="https://restaurant.farm" target="_blank">Farm</a>
+            </div>
             <p>🍽️ Elegant Dinner + Bar Hopping</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScNkTrMDV7Q8weqCIUpT2PEkgPYhF5CIVU99TTxfws03kAPEg/viewform?usp=sharing" target="_blank" class="location">RSVP</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScNkTrMDV7Q8weqCIUpT2PEkgPYhF5CIVU99TTxfws03kAPEg/viewform?usp=sharing" target="_blank">RSVP</a>
             <button onclick="openGuestList('Farm')" style="     background-color: #b9fa85;     color: black;     font-weight: bold;     padding: 10px;     border: none;     border-radius: 5px;     margin-top: 15px;     cursor: pointer; ">View Guest List</button>
         </div>
 
@@ -133,9 +147,12 @@
         <div class="party-box">
             <h2>Olde Hansa</h2>
             <p>📅 Date: Sunday, March 30, 7:00 PM</p>
-            <p>📍 Location: <a href="https://www.oldehansa.ee" target="_blank">Olde Hansa</a></p>
+            <div class="location">
+                <p>📍 Location:</p>
+                <a href="https://www.oldehansa.ee" target="_blank">Olde Hansa</a>
+            </div>
             <p>🍽️ Medieval Feast</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScNkTrMDV7Q8weqCIUpT2PEkgPYhF5CIVU99TTxfws03kAPEg/viewform?usp=sharing" target="_blank" class="location">RSVP</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScNkTrMDV7Q8weqCIUpT2PEkgPYhF5CIVU99TTxfws03kAPEg/viewform?usp=sharing" target="_blank">RSVP</a>
             <button onclick="openGuestList('Olde Hansa')" style="     background-color: #b9fa85;     color: black;     font-weight: bold;     padding: 10px;     border: none;     border-radius: 5px;     margin-top: 15px;     cursor: pointer; ">View Guest List</button>
         </div>
 
@@ -143,9 +160,12 @@
         <div class="party-box">
             <h2>Dominic</h2>
             <p>📅 Date: Tuesday, April 1, 7:00 PM</p>
-            <p>📍 Location: <a href="https://www.restoran.ee" target="_blank">Restoran Dominic</a></p>
+             <div class="location">
+                <p>📍 Location:</p>
+                <a href="https://www.restoran.ee" target="_blank">Restoran Dominic</a>
+            </div>
             <p>🍽️ Fine Dining </p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScNkTrMDV7Q8weqCIUpT2PEkgPYhF5CIVU99TTxfws03kAPEg/viewform?usp=sharing" target="_blank" class="location">RSVP</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScNkTrMDV7Q8weqCIUpT2PEkgPYhF5CIVU99TTxfws03kAPEg/viewform?usp=sharing" target="_blank">RSVP</a>
             <button onclick="openGuestList('Dominic')" style="     background-color: #b9fa85;     color: black;     font-weight: bold;     padding: 10px;     border: none;     border-radius: 5px;     margin-top: 15px;     cursor: pointer; ">View Guest List</button>
         </div>
     </div>
@@ -207,7 +227,7 @@
               let party = data[i][2];  // Column C (Party Selection)
 
               // Only show guests for the selected party
-              if (party.includes(partyName)) {
+              if (party && party.toLowerCase().includes(partyName.toLowerCase())) {
                   guestListHTML += `<li style="padding: 8px; font-size: 1.2em;">${guest}</li>`;
               }
           }
